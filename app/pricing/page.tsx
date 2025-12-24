@@ -5,7 +5,7 @@ import { CheckCircle2 } from "lucide-react";
 
 export default function PricingPage() {
   return (
-    <div className="min-h-screen pt-32 pb-20">
+    <div className="min-h-screen pt-32 pb-20 bg-[#0A0A0F] text-white">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <motion.h1 
