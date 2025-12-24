@@ -1,75 +1,21 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { motion } from "framer-motion";
-import { 
-  ArrowRight, 
-  CheckCircle2, 
-  Sparkles, 
-  Zap, 
-  Shield, 
-  BarChart3,
-  Play
-} from "lucide-react";
-import { cn } from "@/lib/utils"; // Assuming utils exists, or I will create it inline if needed, let's keep it safe by defining inline for now.
-
-// Inline utility for class merging if not present
-function classNames(...classes: (string | undefined | null | false)[]) {
-  return classes.filter(Boolean).join(' ');
-}
+import { ArrowRight, Play, Zap, Shield, BarChart3, CheckCircle2 } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#0A0A0F] text-white font-sans selection:bg-indigo-500/30 overflow-x-hidden">
-      
-      {/* Background Gradients */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-indigo-600/20 rounded-full blur-[120px] mix-blend-screen animate-pulse" style={{ animationDuration: '4s' }}></div>
-        <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-cyan-600/10 rounded-full blur-[120px] mix-blend-screen"></div>
-      </div>
-
-      {/* Navbar */}
-      <nav className="fixed w-full z-50 top-0 border-b border-white/5 bg-[#0A0A0F]/70 backdrop-blur-xl">
-        <div className="container mx-auto px-6 h-20 flex items-center justify-between">
-          <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="flex items-center gap-2"
-          >
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-cyan-400 flex items-center justify-center shadow-lg shadow-indigo-500/20">
-              <Sparkles className="w-5 h-5 text-white" />
-            </div>
-            <span className="text-xl font-bold tracking-tight text-white">
-              Novatrix<span className="text-indigo-400">.ai</span>
-            </span>
-          </motion.div>
-
-          <div className="hidden md:flex gap-8 text-sm font-medium text-slate-400">
-            {['Features', 'Solutions', 'Pricing', 'Resources'].map((item) => (
-              <Link key={item} href={`#${item.toLowerCase()}`} className="hover:text-white transition-colors relative group">
-                {item}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-500 transition-all group-hover:w-full"></span>
-              </Link>
-            ))}
-          </div>
-
-          <motion.button 
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-white text-slate-950 px-5 py-2.5 rounded-full text-sm font-bold transition shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]"
-          >
-            Get Started Free
-          </motion.button>
-        </div>
-      </nav>
-
+    <div className="overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative pt-40 pb-20 px-6 z-10 overflow-hidden">
-        <div className="container mx-auto text-center max-w-5xl">
-          
+      <section className="relative pt-40 pb-20 px-6 z-10 overflow-hidden min-h-screen flex items-center">
+        {/* Animated Background Gradients */}
+        <div className="fixed inset-0 z-0 pointer-events-none">
+          <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-indigo-600/20 rounded-full blur-[120px] mix-blend-screen animate-pulse" style={{ animationDuration: '4s' }}></div>
+          <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-cyan-600/10 rounded-full blur-[120px] mix-blend-screen"></div>
+        </div>
+
+        <div className="container mx-auto text-center max-w-5xl relative z-10">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -122,52 +68,24 @@ export default function Home() {
             </button>
           </motion.div>
 
-          {/* Dashboard Preview (Glassmorphism) */}
+          {/* Dashboard Preview (Glassmorphism + Real Image) */}
           <motion.div 
             initial={{ opacity: 0, y: 50, rotateX: 10 }}
             animate={{ opacity: 1, y: 0, rotateX: 0 }}
             transition={{ delay: 0.6, duration: 0.8 }}
             className="mt-20 relative mx-auto max-w-5xl perspective-1000"
           >
-            {/* Glow behind */}
             <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-cyan-500 rounded-2xl blur-xl opacity-20 animate-pulse"></div>
-            
-            <div className="relative rounded-xl border border-white/10 bg-[#12121A]/80 backdrop-blur-md p-2 shadow-2xl ring-1 ring-white/10">
+            <div className="relative rounded-xl border border-white/10 bg-[#12121A]/80 backdrop-blur-md p-2 shadow-2xl ring-1 ring-white/10 overflow-hidden">
               <div className="rounded-lg overflow-hidden bg-[#0F0F16] aspect-[16/10] relative">
-                {/* Mock UI Header */}
-                <div className="h-10 border-b border-white/5 bg-white/5 flex items-center px-4 gap-2">
-                  <div className="flex gap-1.5">
-                    <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
-                    <div className="w-3 h-3 rounded-full bg-amber-500/50"></div>
-                    <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
-                  </div>
-                  <div className="ml-4 h-5 w-64 bg-white/5 rounded-full"></div>
-                </div>
-                {/* Mock UI Body */}
-                <div className="p-8 grid grid-cols-4 gap-6 h-full">
-                   <div className="col-span-1 border-r border-white/5 space-y-4">
-                      {[1,2,3,4].map(i => (
-                        <div key={i} className="h-8 bg-white/5 rounded-md w-full animate-pulse" style={{ animationDelay: `${i * 0.1}s` }}></div>
-                      ))}
-                   </div>
-                   <div className="col-span-3 space-y-6">
-                      <div className="h-12 w-3/4 bg-white/5 rounded-lg"></div>
-                      <div className="h-4 w-full bg-white/5 rounded"></div>
-                      <div className="h-4 w-full bg-white/5 rounded"></div>
-                      <div className="h-4 w-2/3 bg-white/5 rounded"></div>
-                      
-                      <div className="grid grid-cols-2 gap-4 mt-8">
-                         <div className="h-32 rounded-xl bg-gradient-to-br from-indigo-500/10 to-transparent border border-indigo-500/20 p-4">
-                            <div className="w-8 h-8 rounded-md bg-indigo-500/20 mb-3"></div>
-                            <div className="h-4 w-20 bg-white/10 rounded mb-2"></div>
-                         </div>
-                         <div className="h-32 rounded-xl bg-gradient-to-br from-cyan-500/10 to-transparent border border-cyan-500/20 p-4">
-                            <div className="w-8 h-8 rounded-md bg-cyan-500/20 mb-3"></div>
-                            <div className="h-4 w-20 bg-white/10 rounded mb-2"></div>
-                         </div>
-                      </div>
-                   </div>
-                </div>
+                {/* Real Dashboard Image from Unsplash */}
+                <Image 
+                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2670&auto=format&fit=crop"
+                  alt="Dashboard Interface"
+                  fill
+                  className="object-cover opacity-80 hover:opacity-100 transition duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0F] via-transparent to-transparent"></div>
               </div>
             </div>
           </motion.div>
@@ -175,7 +93,7 @@ export default function Home() {
       </section>
 
       {/* Feature Grid */}
-      <section id="features" className="py-24 relative">
+      <section id="features" className="py-24 relative z-10">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold mb-6">Built for performance</h2>
@@ -204,57 +122,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section id="pricing" className="py-24 bg-[#08080C]">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">Simple, transparent pricing</h2>
-            <div className="flex items-center justify-center gap-4 text-sm font-medium">
-               <span className="text-slate-400">Monthly</span>
-               <div className="w-12 h-6 rounded-full bg-indigo-600 p-1 cursor-pointer">
-                  <div className="w-4 h-4 rounded-full bg-white translate-x-6"></div>
-               </div>
-               <span className="text-white">Yearly (Save 20%)</span>
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto items-center">
-            {/* Card 1 */}
-            <div className="p-8 rounded-3xl bg-white/5 border border-white/5 text-slate-300 hover:border-white/10 transition">
-              <h3 className="text-xl font-semibold mb-2">Starter</h3>
-              <div className="text-4xl font-bold text-white mb-6">$0</div>
-              <ul className="space-y-4 mb-8">
-                {['5,000 words/mo', 'Basic templates', '1 user'].map(item => (
-                  <li key={item} className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-slate-500"/> {item}</li>
-                ))}
-              </ul>
-              <button className="w-full py-3 rounded-xl border border-white/10 hover:bg-white/5 transition font-semibold">Get Started</button>
-            </div>
-
-            {/* Card 2 (Highlight) */}
-            <div className="relative p-8 rounded-3xl bg-indigo-900/10 border border-indigo-500/30 text-white transform md:scale-110 shadow-2xl shadow-indigo-900/20 z-10">
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-3 py-1 bg-indigo-500 rounded-full text-xs font-bold uppercase tracking-wide">Most Popular</div>
-              <h3 className="text-xl font-semibold mb-2 text-indigo-400">Pro</h3>
-              <div className="text-4xl font-bold text-white mb-6">$29<span className="text-lg text-indigo-200/50 font-normal">/mo</span></div>
-              <ul className="space-y-4 mb-8">
-                {['Unlimited words', 'Advanced SEO Mode', '5 users', 'Priority Support'].map(item => (
-                  <li key={item} className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-indigo-400"/> {item}</li>
-                ))}
-              </ul>
-              <button className="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 transition font-semibold shadow-lg shadow-indigo-500/25">Start Free Trial</button>
-            </div>
-
-            {/* Card 3 */}
-            <div className="p-8 rounded-3xl bg-white/5 border border-white/5 text-slate-300 hover:border-white/10 transition">
-              <h3 className="text-xl font-semibold mb-2">Enterprise</h3>
-              <div className="text-4xl font-bold text-white mb-6">Custom</div>
-              <ul className="space-y-4 mb-8">
-                {['API Access', 'Custom LLM Models', 'SSO & Audit Logs'].map(item => (
-                  <li key={item} className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-slate-500"/> {item}</li>
-                ))}
-              </ul>
-              <button className="w-full py-3 rounded-xl border border-white/10 hover:bg-white/5 transition font-semibold">Contact Sales</button>
-            </div>
+      {/* Social Proof */}
+      <section className="py-20 border-y border-white/5 bg-white/[0.02]">
+        <div className="container mx-auto px-6 text-center">
+          <p className="text-sm font-bold text-slate-500 uppercase tracking-widest mb-10">Trusted by modern teams at</p>
+          <div className="flex flex-wrap justify-center gap-12 md:gap-20 opacity-50 grayscale hover:grayscale-0 transition duration-500">
+             {/* Mock Logos - Text for now, but styled */}
+             {['Acme Corp', 'Spherule', 'GlobalBank', 'Nietzsche', 'Bolt'].map((logo) => (
+               <div key={logo} className="text-xl font-bold font-serif text-white/60 hover:text-white transition">{logo}</div>
+             ))}
           </div>
         </div>
       </section>
@@ -265,20 +141,28 @@ export default function Home() {
           <div className="col-span-2">
             <span className="text-xl font-bold text-white block mb-4">Novatrix.ai</span>
             <p className="max-w-xs">Empowering the next generation of content creators with ethical AI tools.</p>
+            <div className="flex gap-4 mt-6">
+              {/* Social Icons */}
+              {['Twitter', 'LinkedIn', 'GitHub'].map(social => (
+                <div key={social} className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-indigo-600 hover:text-white transition cursor-pointer">
+                  <span className="text-xs">{social[0]}</span>
+                </div>
+              ))}
+            </div>
           </div>
           <div>
             <h4 className="font-bold text-white mb-4">Product</h4>
             <ul className="space-y-2">
-              <li><Link href="#" className="hover:text-indigo-400 transition">Features</Link></li>
+              <li><Link href="/pricing" className="hover:text-indigo-400 transition">Pricing</Link></li>
+              <li><Link href="#" className="hover:text-indigo-400 transition">API</Link></li>
               <li><Link href="#" className="hover:text-indigo-400 transition">Integrations</Link></li>
-              <li><Link href="#" className="hover:text-indigo-400 transition">Pricing</Link></li>
             </ul>
           </div>
           <div>
             <h4 className="font-bold text-white mb-4">Company</h4>
             <ul className="space-y-2">
-              <li><Link href="#" className="hover:text-indigo-400 transition">About</Link></li>
-              <li><Link href="#" className="hover:text-indigo-400 transition">Blog</Link></li>
+              <li><Link href="/about" className="hover:text-indigo-400 transition">About Us</Link></li>
+              <li><Link href="/contact" className="hover:text-indigo-400 transition">Contact</Link></li>
               <li><Link href="#" className="hover:text-indigo-400 transition">Careers</Link></li>
             </ul>
           </div>
